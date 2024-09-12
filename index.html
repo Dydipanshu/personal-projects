@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #00ff7f;
+            --background-color: #121212;
+            --card-bg-color: #1e1e1e;
+            --text-color: #f0f0f0;
+            --button-bg-color: #00ff7f;
+            --hover-color: #00cc66;
+            --input-bg-color: #2a2a2a;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        .project-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .project-item {
+            background-color: var(--card-bg-color);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+        }
+        .project-title {
+            font-size: 1.5em;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .project-description {
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            background-color: #333;
+            border-radius: 20px;
+            height: 12px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .progress {
+            background-color: var(--secondary-color);
+            width: 0;
+            height: 100%;
+            border-radius: 20px;
+            transition: width 0.5s ease-in-out;
+        }
+        .progress-input {
+            width: 60px;
+            padding: 8px;
+            background-color: var(--input-bg-color);
+            color: var(--primary-color);
+            border: 1px solid #444;
+            border-radius: 8px;
+            margin-right: 10px;
+            font-size: 1em;
+        }
+        button {
+            background-color: var(--button-bg-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 1em;
+            font-weight: 600;
+        }
+        button:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+        footer {
+            text-align: center;
+            color: var(--text-color);
+            margin-top: 50px;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Project Tracker</h1>
+        <ul id="projectList" class="project-list"></ul>
+    </div>
+
+    <footer>
+        Built for Hackathons | Powered by Developers
+    </footer>
+
+    <script>
+           let projects = [
+            {
+                title: "Interactive Data Visualization Dashboard (Front-End Developer)",
+                description: "Create a responsive, interactive dashboard using React and D3.js. Features include real-time data updates, multiple interconnected charts, user-customizable views, animations, accessibility features, and performance optimization for large datasets. Implement advanced state management and modern CSS techniques."
+            },
+            {
+                title: "Scalable Microservices Architecture (Back-End Developer)",
+                description: "Build a scalable microservices architecture for an e-commerce platform. Implement service discovery, load balancing, and fault tolerance. Use technologies like Node.js, Docker, and Kubernetes. Focus on creating resilient, independently deployable services that communicate effectively."
+            },
+            {
+                title: "Full-Featured Social Media Platform (Full-Stack Developer)",
+                description: "Develop a comprehensive social media platform with real-time features including live chat, notifications, and post updates. Utilize the MERN (MongoDB, Express, React, Node.js) or MEAN stack. Implement user authentication, real-time database updates, and optimized performance for concurrent users."
+            },
+            {
+                title: "Distributed IoT Data Processing System (Software Engineer)",
+                description: "Create a distributed system for processing and analyzing large volumes of IoT sensor data in real-time. Utilize technologies like Apache Kafka for data ingestion, Apache Spark for data processing, and Elasticsearch for data storage and retrieval. Implement data pipelines, real-time analytics, and scalable architecture."
+            },
+            {
+                title: "Progressive Web App News Aggregator (Web Developer)",
+                description: "Construct a progressive web app (PWA) for a news aggregator with offline functionality, push notifications, and server-side rendering for SEO optimization. Implement service workers for offline caching, use IndexedDB for local storage, and ensure cross-browser compatibility."
+            },
+            {
+                title: "Cross-Platform Fitness Tracking App (Mobile App Developer)",
+                description: "Design a cross-platform fitness tracking app using React Native or Flutter. Include features like GPS tracking, heart rate monitoring, social sharing, and integration with wearable devices. Implement clean architecture, state management, and optimize for both iOS and Android platforms."
+            },
+            {
+                title: "CI/CD Pipeline for Microservices (DevOps Engineer)",
+                description: "Set up a complete CI/CD pipeline for a microservices-based application. Include automated testing, containerization, orchestration, and monitoring. Utilize tools like Jenkins, Docker, Kubernetes, and Prometheus. Implement blue-green deployments and automated rollback mechanisms."
+            },
+            {
+                title: "Automated Testing Framework with CI/CD (QA Engineer)",
+                description: "Develop a comprehensive automated testing framework for a complex web application. Include unit tests, integration tests, and end-to-end tests. Implement continuous integration and deployment (CI/CD) pipelines. Use tools like Selenium, Jest, and Jenkins. Focus on test coverage, reporting, and integration with development workflows."
+            },
+            {
+                title: "Comprehensive Data Analysis Project (Data Analyst)",
+                description: "Perform a comprehensive data analysis on a large, real-world dataset (e.g., from Kaggle). Apply advanced statistical methods and machine learning algorithms to derive insights. Present findings through an interactive dashboard. Use Python with libraries like pandas, scikit-learn, and plotly for analysis and visualization."
+            },
+            {
+                title: "Serverless Application on Cloud (Cloud Developer)",
+                description: "Design and implement a serverless application on AWS or Azure. Utilize services like Lambda, API Gateway, and DynamoDB. Include features such as authentication, real-time data processing, and scalable file storage. Implement best practices for security, scalability, and cost optimization in cloud environments."
+            },
+            {
+                title: "Complex Accessible Web Application (UI/UX Developer)",
+                description: "Design and implement a complex, accessible web application with a focus on user experience. Include features like dark mode, internationalization, and adaptive layouts for various devices. Ensure WCAG 2.1 compliance, implement advanced animations, and utilize modern design principles for an intuitive user interface."
+            },
+            {
+                title: "BI Solution with Interactive Dashboards (BI Developer)",
+                description: "Build a comprehensive Business Intelligence solution that integrates data from multiple sources, creates a data warehouse, and provides interactive reports and dashboards. Use tools like Power BI or Tableau. Implement ETL processes, design star schema, and create insightful visualizations for business metrics."
+            },
+            {
+                title: "High-Availability Database Cluster (Database Administrator)",
+                description: "Set up a high-availability database cluster with automated backups, disaster recovery, and performance optimization. Implement data sharding and replication for scalability. Use technologies like PostgreSQL with PgPool-II for load balancing and failover. Implement monitoring and alerting for database health."
+            },
+            {
+                title: "Predictive Maintenance Model (Machine Learning Engineer)",
+                description: "Develop a machine learning model for predictive maintenance in an industrial setting. Include data preprocessing, feature engineering, model training, and deployment as an API. Use techniques like time series analysis and anomaly detection. Implement model versioning, A/B testing, and monitoring for model drift."
+            },
+            {
+                title: "3D Multiplayer Game (Game Developer)",
+                description: "Create a 3D multiplayer game with advanced graphics, physics, and networking. Utilize a game engine like Unity or Unreal Engine. Implement features such as real-time multiplayer, physics-based gameplay, AI opponents, and optimized 3D graphics. Focus on performance optimization and cross-platform compatibility."
+            },
+            {
+                title: "NLP Chatbot with Sentiment Analysis (AI Developer)",
+                description: "Develop a natural language processing (NLP) chatbot with context understanding and sentiment analysis. Use advanced techniques like transformer models (e.g., BERT). Implement features such as intent recognition, entity extraction, and multi-turn conversations. Integrate with messaging platforms and optimize for real-time responses."
+            },
+            {
+                title: "IoT Environmental Monitoring System (IoT Developer)",
+                description: "Construct an IoT-based environmental monitoring system that collects data from various sensors, processes it in real-time, and provides alerts and visualizations through a web interface. Use technologies like MQTT for data transmission, time-series databases for storage, and implement edge computing for local data processing."
+            },
+            {
+                title: "Smart Home Automation System (Embedded Systems Developer)",
+                description: "Design a smart home automation system using Raspberry Pi or Arduino. Integrate various sensors and actuators, with a mobile app for remote control. Implement features like voice control, energy monitoring, and automated routines. Focus on low-power operation and secure communication protocols."
+            },
+            {
+                title: "Decentralized Application on Ethereum (Blockchain Developer)",
+                description: "Create a decentralized application (DApp) on Ethereum. Implement smart contracts, develop a web3 frontend, and integrate with wallets. Add features like token creation and decentralized storage. Focus on gas optimization, security best practices, and interoperability with other blockchain networks."
+            },
+            {
+                title: "Custom Lightweight OS Kernel (Systems Programmer)",
+                description: "Develop a custom, lightweight operating system kernel with basic process management, memory management, and a simple file system. Implement it in a low-level language like C or Rust. Focus on efficiency, minimalism, and educational value. Include features like multi-tasking, virtual memory, and basic device drivers."
+            }
+        ];
+
+        function saveProjects() {
+            localStorage.setItem('projects', JSON.stringify(projects));
+        }
+
+        // Check if projects in local storage are outdated and update them
+        function loadProjects() {
+            const savedProjects = localStorage.getItem('projects');
+            const currentProjects = projects; // Your updated projects list
+
+            // Check if the stored projects length matches the current projects list.
+            // If it doesn't match, we reset the localStorage.
+            if (!savedProjects || JSON.parse(savedProjects).length !== currentProjects.length) {
+                saveProjects(); // Save the updated projects to localStorage
+                return currentProjects;
+            }
+            return JSON.parse(savedProjects);
+        }
+
+        function updateProgress(index, progress) {
+            if (progress < 0 || progress > 100) {
+                alert("Progress must be between 0 and 100.");
+                return;
+            }
+            projects[index].progress = progress;
+            saveProjects();
+            renderProjects();
+        }
+
+        function handleInputEvent(event, index) {
+            const progress = parseInt(event.target.value, 10);
+            if (event.key === 'Enter') {
+                updateProgress(index, progress);
+            }
+        }
+
+        function renderProjects() {
+            const projectList = document.getElementById('projectList');
+            projectList.innerHTML = '';
+            projects.forEach((project, index) => {
+                const li = document.createElement('li');
+                li.className = 'project-item';
+                li.innerHTML = `
+                    <div class="project-title">${project.title}</div>
+                    <div class="project-description">${project.description}</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: ${project.progress || 0}%"></div>
+                    </div>
+                    <input type="number" class="progress-input" value="${project.progress || 0}" min="0" max="100">
+                    <button onclick="updateProgress(${index}, this.previousElementSibling.value)">Update</button>
+                `;
+
+                const progressInput = li.querySelector('.progress-input');
+                
+                // Enforce the min-max validation and update on Enter key
+                progressInput.addEventListener('keypress', (event) => handleInputEvent(event, index));
+                progressInput.addEventListener('blur', (event) => {
+                    const progress = parseInt(event.target.value, 10);
+                    updateProgress(index, progress);
+                });
+
+                projectList.appendChild(li);
+            });
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            projects = loadProjects();
+            renderProjects();
+        });
+
+
+    </script>
+</body>
+</html>
